@@ -22,6 +22,10 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
+
+                                 <jet-nav-link :href="route('courses.index')" :active="route().current('courses.index')">
+                                    Formations
+                                </jet-nav-link>
                             </div>
                         </div>
 
@@ -220,6 +224,12 @@
             <header class="bg-white shadow" v-if="$slots.header">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header"></slot>
+
+                    <div class="bg-blue-500">
+
+                        <slot name="after_header"></slot>
+
+                    </div>
                 </div>
             </header>
 
