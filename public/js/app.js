@@ -20720,6 +20720,11 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     switchToThisEpisodeAndWatchIt: function switchToThisEpisodeAndWatchIt(index) {
       this.defaultEpisodeIndex = index;
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
     }
   }
 });

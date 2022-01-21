@@ -53,7 +53,15 @@ export default {
     methods: {
         switchToThisEpisodeAndWatchIt(index){
 
-            this.defaultEpisodeIndex = index
+            this.defaultEpisodeIndex = index;
+
+            window.scroll({
+
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+
+            });
         }
 
     },
