@@ -34,5 +34,4 @@ Route::get('/courses', [CourseController::class, 'index'])->name('courses.index'
 
 Route::get('/course/{id}', [CourseController::class, 'show']);
 
-
-
+Route::post('/toggleProgressButtonEpisodeVueServerSide', [CourseController::class, 'toggleProgressButtonEpisode']);
