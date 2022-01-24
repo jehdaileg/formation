@@ -22,7 +22,7 @@
                             <div class="flex justify-between items-center">
                                  <button @click="switchToThisEpisodeAndWatchIt(index)" class="rounded-lg mt-1 p-3 bg-slate-500 text-white inline-block">Voir Episode {{ index + 1 }}</button>
 
-                                <ProgressButtonEpisodeVue :episodeId="episode.id"/>
+                                <ProgressButtonEpisodeVue :episodeId="episode.id" :watchedEpisodes="watchedArrayEpisodesByAuthUser"/>
                             </div>
 
                         </div>
@@ -54,7 +54,11 @@ export default {
 
         episodeId: {
             type: String,
-        }
+        },
+
+        watchedArrayEpisodesByAuthUser: {
+            type: Array,
+        },
     },
 
     components: {

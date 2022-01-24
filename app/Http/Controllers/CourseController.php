@@ -29,8 +29,12 @@ class CourseController extends Controller
     {
         $course = Course::where('id', $id)->with(['user', 'episodes'])->first();
 
+        $watchedArrayBytheAuthUser = auth()->user()->episodes;
+
         return Inertia::render('Courses/Show', [
             'course' => $course,
+
+            'watchedArrayEpisodesByAuthUser' => $watchedArrayBytheAuthUser,
 
         ]);
 
@@ -45,6 +49,8 @@ class CourseController extends Controller
         $user->episodes()->toggle($id);
 
         return $user->episodes;
+
+
 
     }
 }

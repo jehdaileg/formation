@@ -20689,10 +20689,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Courses/ProgressButtonEpisode.vue?vue&type=script&setup=true&lang=js":
-/*!*****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Courses/ProgressButtonEpisode.vue?vue&type=script&setup=true&lang=js ***!
-  \*****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Courses/ProgressButtonEpisode.vue?vue&type=script&lang=js":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Courses/ProgressButtonEpisode.vue?vue&type=script&lang=js ***!
+  \******************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20700,41 +20700,67 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: {
-    episodeId: ''
+  data: function data() {
+    return {
+      wathedEpisodesArray: this.watchedEpisodes,
+      isWatched: null
+    };
   },
-  setup: function setup(__props, _ref) {
-    var expose = _ref.expose;
-    expose();
-    var props = __props;
+  props: {
+    episodeId: String,
+    watchedEpisodes: Array
+  },
+  methods: {
+    toggleProgressButtonEpisodeVue: function toggleProgressButtonEpisodeVue() {
+      var _this = this;
 
-    function toggleProgressButtonEpisodeVue() {
       //alert(props.episodeId)
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/toggleProgressButtonEpisodeVueServerSide', {
-        episodeId: props.episodeId
+      axios.post('/toggleProgressButtonEpisodeVueServerSide', {
+        episodeId: this.episodeId
       }).then(function (response) {
-        return console.log(response);
+        if (response.status === 200) {
+          _this.isWatched = !_this.isWatched;
+        }
       })["catch"](function (error) {
         return console.log(error);
       });
-    }
+    },
+    isWatchedEpisodesTheSame: function isWatchedEpisodesTheSame() {
+      var _this2 = this;
 
-    var __returned__ = {
-      props: props,
-      toggleProgressButtonEpisodeVue: toggleProgressButtonEpisodeVue,
-      axios: (axios__WEBPACK_IMPORTED_MODULE_0___default())
-    };
-    Object.defineProperty(__returned__, '__isScriptSetup', {
-      enumerable: false,
-      value: true
-    });
-    return __returned__;
+      return this.watchedEpisodes.find(function (episode) {
+        return episode.id === _this2.episodeId;
+      }) ? true : false;
+    }
+  },
+  mounted: function mounted() {
+    //console.log(this.wathedEpisodesArray)
+    this.isWatched = this.isWatchedEpisodesTheSame();
   }
 });
+/*
+import axios from "axios";
+
+
+const props = defineProps({
+    episodeId: '',
+});
+
+function toggleProgressButtonEpisodeVue()
+{
+    //alert(props.episodeId)
+   axios
+     .post('/toggleProgressButtonEpisodeVueServerSide', {
+
+         episodeId: props.episodeId,
+
+     })
+     .then(response => console.log(response))
+     .catch(error => console.log(error))
+}
+
+*/
 
 /***/ }),
 
@@ -20766,6 +20792,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     episodeId: {
       type: String
+    },
+    watchedArrayEpisodesByAuthUser: {
+      type: Array
     }
   },
   components: {
@@ -24690,10 +24719,12 @@ __webpack_require__.r(__webpack_exports__);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return $setup.toggleProgressButtonEpisodeVue();
+      return $options.toggleProgressButtonEpisodeVue();
     }),
     "class": "p-2 ml-4 px-2 py-2 rounded bg-green-500 shadow-lg text-white"
-  }, "Termine ??")]);
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(this.isWatched ? 'Done Already !' : 'Termine ?'), 1
+  /* TEXT */
+  )]);
 }
 
 /***/ }),
@@ -24783,10 +24814,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }, "Voir Episode " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(index + 1), 9
         /* TEXT, PROPS */
         , _hoisted_10), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_ProgressButtonEpisodeVue, {
-          episodeId: episode.id
+          episodeId: episode.id,
+          watchedEpisodes: $props.watchedArrayEpisodesByAuthUser
         }, null, 8
         /* PROPS */
-        , ["episodeId"])])])]);
+        , ["episodeId", "watchedEpisodes"])])])]);
       }), 128
       /* KEYED_FRAGMENT */
       ))])])];
@@ -51512,14 +51544,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _ProgressButtonEpisode_vue_vue_type_template_id_593fc6ac__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProgressButtonEpisode.vue?vue&type=template&id=593fc6ac */ "./resources/js/Pages/Courses/ProgressButtonEpisode.vue?vue&type=template&id=593fc6ac");
-/* harmony import */ var _ProgressButtonEpisode_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProgressButtonEpisode.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Courses/ProgressButtonEpisode.vue?vue&type=script&setup=true&lang=js");
+/* harmony import */ var _ProgressButtonEpisode_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProgressButtonEpisode.vue?vue&type=script&lang=js */ "./resources/js/Pages/Courses/ProgressButtonEpisode.vue?vue&type=script&lang=js");
 /* harmony import */ var _home_jehdai_Desktop_inertia_practice_formations_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_jehdai_Desktop_inertia_practice_formations_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ProgressButtonEpisode_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ProgressButtonEpisode_vue_vue_type_template_id_593fc6ac__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Courses/ProgressButtonEpisode.vue"]])
+const __exports__ = /*#__PURE__*/(0,_home_jehdai_Desktop_inertia_practice_formations_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ProgressButtonEpisode_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ProgressButtonEpisode_vue_vue_type_template_id_593fc6ac__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Courses/ProgressButtonEpisode.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -52367,18 +52399,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Courses/ProgressButtonEpisode.vue?vue&type=script&setup=true&lang=js":
-/*!*************************************************************************************************!*\
-  !*** ./resources/js/Pages/Courses/ProgressButtonEpisode.vue?vue&type=script&setup=true&lang=js ***!
-  \*************************************************************************************************/
+/***/ "./resources/js/Pages/Courses/ProgressButtonEpisode.vue?vue&type=script&lang=js":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/Pages/Courses/ProgressButtonEpisode.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ProgressButtonEpisode_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ProgressButtonEpisode_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ProgressButtonEpisode_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ProgressButtonEpisode.vue?vue&type=script&setup=true&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Courses/ProgressButtonEpisode.vue?vue&type=script&setup=true&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ProgressButtonEpisode_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ProgressButtonEpisode.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Courses/ProgressButtonEpisode.vue?vue&type=script&lang=js");
  
 
 /***/ }),
