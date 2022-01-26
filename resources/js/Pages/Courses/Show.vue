@@ -12,6 +12,10 @@
 
                 <div class="">{{ this.courseShow.episodes[this.defaultEpisodeIndex].description.substring(0, 50) }} ...</div>
 
+                <div class="mt-2 progression_bar">
+                    <ProgressionBarPourcentageVue :episodesAllForTheCourse="this.courseShow.episodes" :episodesWatchedByAuthUser="watchedArrayEpisodesByAuthUser" />
+                </div>
+
                 <div class="mt-6">
                     <div class="text-blue-500">Autres Episodes:</div>
                     <ul v-for="(episode, index) in this.courseShow.episodes" :key="episode.id">
@@ -38,6 +42,8 @@
 <script>
 import AppLayout from "../../Layouts/AppLayout.vue";
 import ProgressButtonEpisodeVue from "./ProgressButtonEpisode.vue";
+import ProgressionBarPourcentageVue from "./ProgressionBarPourcentage.vue";
+
 export default {
     data() {
         return {
@@ -62,7 +68,7 @@ export default {
     },
 
     components: {
-        AppLayout, ProgressButtonEpisodeVue
+        AppLayout, ProgressButtonEpisodeVue,ProgressionBarPourcentageVue,
     },
 
     methods: {
