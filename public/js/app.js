@@ -24629,27 +24629,34 @@ var _hoisted_2 = {
   "class": "py-4"
 };
 var _hoisted_3 = {
-  "class": "m-0 text-sm underline font-bold text-gray-500"
+  "class": "m-0 text-sm underline font-bold text-pink-400"
 };
 var _hoisted_4 = {
-  "class": "flex justify-between items-center"
+  "class": "text-pink-500 font-bold text-sm ml-6"
 };
 var _hoisted_5 = {
-  "class": "flex justify-between items-center"
+  key: 0,
+  "class": "text-pink-500 font-bold text-sm"
 };
 var _hoisted_6 = {
-  "class": "text-xl"
+  "class": "flex justify-between items-center"
 };
 var _hoisted_7 = {
-  "class": "text-sm text-gray-500"
+  "class": "flex justify-between items-center"
 };
 var _hoisted_8 = {
+  "class": "text-xl"
+};
+var _hoisted_9 = {
+  "class": "text-sm text-gray-500"
+};
+var _hoisted_10 = {
   "class": "flex justify-between items-center"
 };
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Voir le cours");
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Voir le cours");
 
-var _hoisted_10 = {
+var _hoisted_12 = {
   "class": "text-sm font-bold text-indigo-400"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -24670,25 +24677,27 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           key: course.id
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_3, "Posted by: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(course.user.name), 1
         /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(course.title.substring(0, 34)) + "...", 1
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(course.participants_on_the_course_via_episode) + " participant", 1
         /* TEXT */
-        )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(course.episodes_count) + " episodes", 1
+        ), parseInt(course.participants_on_the_course_via_episode) > 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_5, "s")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(course.title.substring(0, 34)) + "...", 1
+        /* TEXT */
+        )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(course.episodes_count) + " episodes", 1
         /* TEXT */
         )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(course.description.substring(0, 150)) + " ...", 1
         /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
           href: '/course/' + course.id,
           "class": "rounded text-white px-2 py-1 text-xl bg-indigo-400 hover:bg-indigo-800 inline-block mt-3"
         }, {
           "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-            return [_hoisted_9];
+            return [_hoisted_11];
           }),
           _: 2
           /* DYNAMIC */
 
         }, 1032
         /* PROPS, DYNAMIC_SLOTS */
-        , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(course.created_at), 1
+        , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(course.created_at), 1
         /* TEXT */
         )])]);
       }), 128
