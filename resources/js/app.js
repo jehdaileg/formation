@@ -4,6 +4,9 @@ import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 
+import { Vue } from "vue";
+
+
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
 
@@ -18,4 +21,7 @@ createInertiaApp({
     },
 });
 
+window.eventBus = new Vue() //for sharing datas through components without pass by the parent component and refresh automaticly
+
 InertiaProgress.init({ color: '#4B5563' });
+

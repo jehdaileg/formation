@@ -20721,6 +20721,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         if (response.status === 200) {
           _this.isWatched = !_this.isWatched;
+          eventBus.$emit('toggleProgressPercentage', response.data);
         }
       })["catch"](function (error) {
         return console.log(error);
@@ -20798,7 +20799,13 @@ __webpack_require__.r(__webpack_exports__);
     episodesAllForTheCourse: Array,
     episodesWatchedByAuthUser: Array
   },
-  mounted: function mounted() {//console.log(this.epCourse, this.epWatchedByUser)
+  mounted: function mounted() {
+    var _this2 = this;
+
+    //console.log(this.epCourse, this.epWatchedByUser)
+    eventBus.$on('toggleProgressPercentage', function (data) {
+      return _this2.epWatchedByUser = data;
+    });
   }
 });
 
@@ -24799,7 +24806,7 @@ var _hoisted_1 = {
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    "class": "text-white bg-green-500 rounded-l",
+    "class": "text-white bg-green-500 rounded-l transition-width duration-500",
     style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)('width:' + $options.percentage + '%;')
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.percentage) + " %", 5
   /* TEXT, STYLE */
@@ -26234,6 +26241,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
+
 var appName = ((_window$document$getE = window.document.getElementsByTagName('title')[0]) === null || _window$document$getE === void 0 ? void 0 : _window$document$getE.innerText) || 'Laravel';
 (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.createInertiaApp)({
   title: function title(_title) {
@@ -26258,6 +26266,8 @@ var appName = ((_window$document$getE = window.document.getElementsByTagName('ti
     }).mount(el);
   }
 });
+window.eventBus = new vue__WEBPACK_IMPORTED_MODULE_0__.Vue(); //for sharing datas through components without pass by the parent component and refresh automaticly
+
 _inertiajs_progress__WEBPACK_IMPORTED_MODULE_2__.InertiaProgress.init({
   color: '#4B5563'
 });

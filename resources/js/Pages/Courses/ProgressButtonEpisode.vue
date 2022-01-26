@@ -38,6 +38,8 @@ methods: {
          if(response.status === 200)
          {
              this.isWatched = !this.isWatched
+
+             eventBus.$emit('toggleProgressPercentage', response.data)
          }
      })
      .catch(error => console.log(error))
