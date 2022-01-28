@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="bg-gray-200 w-full rounded-lg">
-            <div class="text-white bg-green-500 rounded-l transition-width duration-500" :style="'width:' +percentage+ '%;'">{{ percentage }} %</div>
+            <div class="text-white bg-green-500 rounded-l text-center transition-width duration-500" :style="'width:' +percentage+ '%;'">{{ percentage }} %</div>
         </div>
     </div>
 </template>

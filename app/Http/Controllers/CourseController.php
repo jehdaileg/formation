@@ -40,7 +40,7 @@ class CourseController extends Controller
 
     }
 
-    public function show(int $id)
+    public function show($id)
     {
         $course = Course::where('id', $id)->with(['user', 'episodes'])->first();
 
@@ -65,7 +65,10 @@ class CourseController extends Controller
 
         return $user->episodes;
 
+    }
 
-
+    public function create()
+    {
+        return Inertia::render('Courses/CreateCourse');
     }
 }

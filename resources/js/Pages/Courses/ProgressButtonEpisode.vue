@@ -56,7 +56,7 @@ methods: {
     {
         //console.log(this.wathedEpisodesArray)
 
-        this.isWatched = this.isWatchedEpisodesTheSame()
+        return this.isWatched = this.isWatchedEpisodesTheSame()
     }
 
 }
