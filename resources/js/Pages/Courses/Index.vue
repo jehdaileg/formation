@@ -8,6 +8,8 @@
 
     <div class="py-4">
 
+        <div v-if="$page.flash" class="bg-green-500 text-white text-center">{{ $page.flash }}</div>
+
         <div class="mx-8 rounded shadow-lg px-2  py-4" v-for="course in this.ListCourses" :key="course.id">
              <span class="m-0 text-sm underline font-bold text-pink-400">Posted by: {{ course.user.name }}</span>
              <span class="text-pink-500 font-bold text-sm ml-6">{{ course.participants_on_the_course_via_episode  }} participant</span>
@@ -52,7 +54,7 @@ export default {
     },
 
     props: {
-        courses: Array,
+        courses: Array, flash: String,
 
     },
 

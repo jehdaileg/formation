@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Course;
+use App\Models\Episode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -70,5 +71,20 @@ class CourseController extends Controller
     public function create()
     {
         return Inertia::render('Courses/CreateCourse');
+    }
+
+    public function store(Request $request)
+    {
+
+        $course = Course::create($request->all());
+
+        foreach($request->input('episodes') as $episode)
+        {
+            $episode['course_id'] = $course->id;
+
+           // Episode::create($episode);
+        }
+
+        return redirect()->route('courses.index')->with('messageSuccess', 'Felicititations Vous avez poste un cours.');
     }
 }

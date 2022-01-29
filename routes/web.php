@@ -32,6 +32,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
 
+Route::post('/courses', [CourseController::class, 'store'])->name('course.store');
+
 Route::get('/course/{id}', [CourseController::class, 'show']);
 
 Route::post('/toggleProgressButtonEpisodeVueServerSide', [CourseController::class, 'toggleProgressButtonEpisode']);
