@@ -24892,7 +24892,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             return $data.form.episodes[index].title = $event;
           },
           "class": "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
-          id: index,
+          id: 'title-' + index,
           type: "text",
           placeholder: "Tap title..."
         }, null, 8
@@ -24907,7 +24907,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             return $data.form.episodes[index].video_url = $event;
           },
           "class": "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
-          id: index,
+          id: 'video_url-' + index,
           type: "text",
           placeholder: "Tap Video..."
         }, null, 8
@@ -24922,7 +24922,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             return $data.form.episodes[index].description = $event;
           },
           "class": "form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid rounded transition ease-in-out m-0 focus:text-gray-700 focus:outline-none focus:border-blue-600 focus:bg-white",
-          id: index,
+          id: 'description-' + index,
           rows: "3",
           placeholder: "Description..."
         }, null, 8

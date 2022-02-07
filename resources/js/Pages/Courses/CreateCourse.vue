@@ -37,14 +37,14 @@
                                                 <label class="block text-gray-700 text-sm font-bold mb-2" :for="index">
                                                     Title Episode  {{ index + 1 }}
                                                 </label>
-                                                <input v-model="form.episodes[index].title" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" :id="index" type="text" placeholder="Tap title...">
+                                                <input v-model="form.episodes[index].title" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" :id="'title-' +index" type="text" placeholder="Tap title...">
                                                 </div>
 
                                                    <div class="mb-4">
                                                     <label class="block text-gray-700 text-sm font-bold mb-2" :for="index">
                                                         Video Episode  {{ index + 1 }}
                                                     </label>
-                                                    <input v-model="form.episodes[index].video_url" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" :id="index" type="text" placeholder="Tap Video...">
+                                                    <input v-model="form.episodes[index].video_url" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" :id="'video_url-' +index" type="text" placeholder="Tap Video...">
                                                     </div>
 
                                                <div class="mb-4">
@@ -53,7 +53,7 @@
                                                 >Description Eisode {{ index + 1 }}</label
                                                 >
                                                 <textarea v-model="form.episodes[index].description" class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid rounded transition ease-in-out m-0 focus:text-gray-700 focus:outline-none focus:border-blue-600 focus:bg-white"
-                                                :id="index"
+                                                :id="'description-' +index"
                                                 rows="3"
                                                 placeholder="Description..."
                                                 ></textarea>

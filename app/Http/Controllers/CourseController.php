@@ -76,13 +76,14 @@ class CourseController extends Controller
     public function store(Request $request)
     {
 
+      //  dd(request('episodes'));
+
         $course = Course::create($request->all());
 
-        foreach($request->input('episodes') as $episode)
-        {
+        foreach(request('episodes') as $episode){
             $episode['course_id'] = $course->id;
 
-           // Episode::create($episode);
+            Episode::create($episode);
         }
 
         return redirect()->route('courses.index')->with('messageSuccess', 'Felicititations Vous avez poste un cours.');
