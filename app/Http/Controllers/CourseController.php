@@ -31,6 +31,7 @@ class CourseController extends Controller
                                ) AS participants_on_the_course_via_episode '
                            ))
                            ->withCount('episodes')
+                           ->latest()
                            ->get(); // get the realtion user and count times relation epidode
 
         return Inertia::render('Courses/Index', [
@@ -76,7 +77,14 @@ class CourseController extends Controller
     public function store(Request $request)
     {
 
-      //  dd(request('episodes'));
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'episodes' => ['required', 'array'],
+            'episodes.*.title' => 'required',
+            'episodes.*.description' => 'required',
+            'episodes.*.video_url' => 'required'
+        ]);
 
         $course = Course::create($request->all());
 
