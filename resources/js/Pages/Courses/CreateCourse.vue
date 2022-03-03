@@ -110,7 +110,7 @@
                                 placeholder="Description..."
                             ></textarea>
 
-                            <div class="text-red-500" v-if="errors['episodes.' +index+ '.description']">{{ errors['episodes.' +index+ '.decription'][0] }}</div>
+                            <div class="text-red-500" v-if="errors['episodes.' +index+ '.description']">{{ errors['episodes.' +index+ 'decription'][0] }}</div>
                         </div>
                     </div>
                 </div>

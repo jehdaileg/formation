@@ -27,6 +27,7 @@
 
             <div class="flex justify-between items-center">
                  <Link :href="'/course/' + course.id" class="rounded text-white px-2 py-1 text-xl bg-indigo-400 hover:bg-indigo-800 inline-block mt-3">Voir le cours</Link>
+                 <Link :href="'/course/edit/' + course.id" class="rounded text-white px-2 py-1 text-xl bg-gray-600 hover:bg-black inline-block mt-3">Editer mon cours</Link>
 
                  <span class="text-sm font-bold text-indigo-400">{{ course.created_at }}</span>
 

@@ -40,3 +40,5 @@ Route::post('/toggleProgressButtonEpisodeVueServerSide', [CourseController::clas
 
 Route::get('/course', [CourseController::class, 'create'])->name('course.create');
 
+Route::get('/course/edit/{id}', [CourseController::class, 'edit'])->name('course.edit');
+

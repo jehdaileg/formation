@@ -96,4 +96,12 @@ class CourseController extends Controller
 
         return redirect()->route('courses.index')->with('messageSuccess', 'Felicititations Vous avez poste un cours.');
     }
+
+    public function edit($id)
+    {
+        $course = Course::query()->where('id', $id)->with('episodes')->first();
+
+        dd($course);
+
+    }
 }
