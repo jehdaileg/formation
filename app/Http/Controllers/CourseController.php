@@ -99,9 +99,33 @@ class CourseController extends Controller
 
     public function edit($id)
     {
-        $course = Course::query()->where('id', $id)->with('episodes')->first();
+        $course = Course::where('id', $id)->with('episodes')->first();
 
-        dd($course);
+        //dd($course);
+
+        return Inertia::render('Courses/Edit', [
+            'course' => $course
+        ]);
+
+    }
+
+    public function update($id, Request $request)
+    {
+        $course = Course::where('id', $id)->with('episodes')->first();
+
+        $course->update($request->all());
+
+        $course->episodes()->delete(); //REMOVE CASCADE ON DELETE attribute
+
+        foreach($request->episodes as $episode)
+        {
+            $episode['course_id'] = $course->id;
+
+            Episode::create($episode);
+        }
+
+        return redirect()->route('courses.index')->with('messageSuccess', 'Felicititations Vous avez poste un cours.');
+
 
     }
 }

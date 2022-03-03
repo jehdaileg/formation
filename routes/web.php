@@ -42,3 +42,5 @@ Route::get('/course', [CourseController::class, 'create'])->name('course.create'
 
 Route::get('/course/edit/{id}', [CourseController::class, 'edit'])->name('course.edit');
 
+Route::patch('/course/{id}', [CourseController::class, 'update'])->name('course.update');
+
