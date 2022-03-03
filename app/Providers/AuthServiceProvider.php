@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Symfony\Component\CssSelector\Node\FunctionNode;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -26,5 +28,9 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         //
+       Gate::define('update-course', function($course){
+        return $course->user_id === auth()->user()->id;
+       });
+
     }
 }
